@@ -1,3 +1,4 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 
 class Costum {
@@ -11,20 +12,42 @@ class Costum {
         prefixIcon: Icon(iconData),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide(color: Colors.black, width: 2)),
+            borderSide: BorderSide(color: Colors.black, width: 1)),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
-          borderSide: BorderSide(color: Colors.white70, width: 2),
+          borderSide: BorderSide(color: Colors.purple, width: 1),
         ),
       ),
     );
   }
 
-  static Button(void Function()? onPressed, ) {
+  static Button(void Function()? onPressed, String txt ) {
     return ElevatedButton(
       onPressed: onPressed,
-      child: Text('Sign Up'),
-      style: ElevatedButton.styleFrom(minimumSize: Size(400, 50)),
+      child: Text(txt ,style: TextStyle(color: Colors.white, fontSize: 22),),
+      style: ElevatedButton.styleFrom(minimumSize: Size(350, 50), backgroundColor: Colors.black),
     );
+  }
+
+
+  static snack_bar (BuildContext context , String title, message, ContentType contentType) {
+    final snackBar = SnackBar(
+
+      /// need to set following properties for best effect of awesome_snackbar_content
+      elevation: 0,
+      behavior: SnackBarBehavior.floating,
+      backgroundColor: Colors.transparent,
+      content: AwesomeSnackbarContent(
+        title: title,
+        message: message,
+
+        /// change contentType to ContentType.success, ContentType.warning or ContentType.help for variants
+        contentType: contentType,
+      ),
+    );
+
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(snackBar);
   }
 }

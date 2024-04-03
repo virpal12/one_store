@@ -224,7 +224,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Padding(
                             padding: const EdgeInsets.only(left: 144.0, top: 3),
                             child: Container(
-                              color: Colors.white,
+                                color: Colors.blueGrey.shade100,
                                 height: 19,
                                 width: 20,
                                 child: InkWell(
